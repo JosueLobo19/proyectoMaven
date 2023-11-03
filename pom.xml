@@ -22,7 +22,6 @@
   <module>microservice-eureka</module>
   <module>microservice-config</module>
   <module>microservice-user</module>
-  <module>auth-service</module>
 </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
