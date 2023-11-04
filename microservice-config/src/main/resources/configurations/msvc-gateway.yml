@@ -17,3 +17,7 @@ spring:
           uri: http://localhost:8090
           predicates:
             - Path=/api/v01/**
+        - id: auth-services
+          uri: http://localhost:8081
+          predicates:
+            - Path=/auth/**
