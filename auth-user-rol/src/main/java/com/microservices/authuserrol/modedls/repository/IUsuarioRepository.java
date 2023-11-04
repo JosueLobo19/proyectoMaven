@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@RepositoryRestResource(path="usuario")
+@RepositoryRestResource(collectionResourceRel = "usuario",path="usuario")
 public interface IUsuarioRepository extends PagingAndSortingRepository<Usuario,Long> {
 
     Usuario findByUsername(String username);
