@@ -1,4 +1,4 @@
-package com.microservices.authuserrol.modedls.entity;
+package com.microservices.authuserrol.models.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

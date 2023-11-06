@@ -1,6 +1,5 @@
-package com.microservices.authuserrol.modedls.entity;
+package com.microservices.authuserrol.models.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,8 +16,8 @@ public class Usuario  implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
     private long idUser;
-
-    private String username;
+    @Column(name = "username")
+    private String userName;
     private String password;
     private String estado;
 
@@ -47,13 +46,13 @@ public class Usuario  implements Serializable {
 
 
     public String getUsername() {
-        return username;
+        return userName;
     }
 
 
 
     public void setUsername(String username) {
-        this.username = username;
+        this.userName = username;
     }
 
 

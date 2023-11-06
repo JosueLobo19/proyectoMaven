@@ -29,7 +29,6 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> 
         ServerHttpResponse response=exchange.getResponse();
         response.setStatusCode(status);
         return response.setComplete();
-
     }
 
 
@@ -40,11 +39,15 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config> 
                 return onError(exchange, HttpStatus.BAD_REQUEST);
             String tokenHeader = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
             String [] chunks = tokenHeader.split(" ");
+            System.out.println("el valor de chunks es:"+chunks);
             if(chunks.length != 2 || !chunks[0].equals("Bearer"))
                 return onError(exchange, HttpStatus.BAD_REQUEST);
+            System.out.println("el valor de pasando el error"+chunks[1]);
             return webClient.build()
-                    .post()
-                    .uri("http://localhost:8081/auth/validate?token=" + chunks[1])
+                    .get()
+                    .uri("http://auth-user-rol/auth/validate/" + chunks[1])
+                   // .uri("http://auth-user-rol/auth/validate")
+                   // .bodyValue()
                     .retrieve().bodyToMono(TokenDto.class)
                     .map(t -> {
                         t.getToken();
