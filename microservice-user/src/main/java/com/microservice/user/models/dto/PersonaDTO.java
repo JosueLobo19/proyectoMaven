@@ -1,10 +1,22 @@
 package com.microservice.user.models.dto;
 
+import com.microservice.user.models.entity.Empresa;
 import com.microservice.user.models.entity.Usuario;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.util.Set;
 
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PersonaDTO {
     private Long idPersona;
 
@@ -24,89 +36,27 @@ public class PersonaDTO {
 
     private String Ubigeo;
 
-    private Set<Usuario> usuario;
 
-    public Long getIdPersona() {
-        return idPersona;
-    }
+    @Column(length = 18)
+    private String cip;
 
-    public void setIdPersona(Long idPersona) {
-        this.idPersona = idPersona;
-    }
+    @Column(length = 50)
+    private String cargo;
 
-    public String getNombres() {
-        return nombres;
-    }
+    private Boolean estado;
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaRegistro;
 
-    public String getApellidos() {
-        return apellidos;
-    }
+    private String userRegistro;
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaActualizacion;
 
-    public Long getNumDocumento() {
-        return numDocumento;
-    }
+    private String userActualizacion;
 
-    public void setNumDocumento(Long numDocumento) {
-        this.numDocumento = numDocumento;
-    }
+   // private Set<Usuario> usuario;
 
-    public String getCorreoElect() {
-        return correoElect;
-    }
+    private long idEmpresa;
 
-    public void setCorreoElect(String correoElect) {
-        this.correoElect = correoElect;
-    }
-
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
-    public String getTelFijo() {
-        return telFijo;
-    }
-
-    public void setTelFijo(String telFijo) {
-        this.telFijo = telFijo;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getUbigeo() {
-        return Ubigeo;
-    }
-
-    public void setUbigeo(String ubigeo) {
-        Ubigeo = ubigeo;
-    }
-
-    public Set<Usuario> getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Set<Usuario> usuario) {
-        this.usuario = usuario;
-    }
-
-    public PersonaDTO() {
-        super();
-    }
 }

@@ -3,3 +3,6 @@ spring:
     name: msvc-user
   config:
     import: optional:configserver:http://localhost:8888
+  jackson:
+    serialization:
+      fail-on-empty-beans: false

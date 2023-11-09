@@ -1,4 +1,5 @@
 package com.microservice.user.models.entity;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,7 +21,9 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class Usuario  implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
@@ -37,8 +40,6 @@ public class Usuario {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_rol", referencedColumnName = "id_rol"))
     private Set<Rol> rol = new HashSet<>();
-
-
 
     public long getIdUser() {
         return idUser;

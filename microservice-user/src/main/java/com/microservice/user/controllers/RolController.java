@@ -36,6 +36,7 @@ public class RolController {
 
     @PostMapping
     public ResponseEntity<RolDTO> guardarRol(@Valid @RequestBody RolDTO rolDTO){
+        System.out.println("entro a registrar rol");
         return new ResponseEntity<>(rolServer.crearRol(rolDTO), HttpStatus.CREATED);
     }
     @PutMapping("/{id}")

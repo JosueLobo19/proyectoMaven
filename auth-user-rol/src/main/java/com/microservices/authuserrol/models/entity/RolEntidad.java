@@ -1,23 +1,20 @@
-package com.microservice.user.models.entity;
+package com.microservices.authuserrol.models.entity;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
 @Table(name = "rol")
-public class Rol implements Serializable {
+public class RolEntidad implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id

@@ -51,7 +51,6 @@ public class PersonaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminarPersona(@PathVariable(name = "id") long id) {
-
         personaServe.eliminarPersona(id);
         json=new JSONObject();
         return new ResponseEntity<>(json.put("message","Registro Eliminado exitosamente!").toString(),HttpStatus.OK);    }

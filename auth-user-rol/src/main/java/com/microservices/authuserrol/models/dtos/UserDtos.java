@@ -1,7 +1,15 @@
 package com.microservices.authuserrol.models.dtos;
 
 import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDtos {
 
 
@@ -20,44 +28,4 @@ public class UserDtos {
     private long idRol ;
 
 
-    public long getIdRol() {
-        return idRol;
-    }
-    public void setIdRol(long idRol) {
-        this.idRol = idRol;
-    }
-    public long getIdPersona() {
-        return idPersona;
-    }
-    public void setIdPersona(long idPersona) {
-        this.idPersona = idPersona;
-    }
-    public long getIdUser() {
-        return idUser;
-    }
-    public void setIdUser(long idUser) {
-        this.idUser = idUser;
-    }
-
-    public String getUsername() {
-        return userName;
-    }
-    public void setUsername(String username) {
-        this.userName = username;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public String getEstado() {
-        return estado;
-    }
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-    public UserDtos() {
-        super();
-    }
 }

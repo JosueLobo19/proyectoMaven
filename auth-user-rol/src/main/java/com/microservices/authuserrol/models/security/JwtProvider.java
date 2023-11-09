@@ -27,7 +27,7 @@ public class JwtProvider {
 
     public String createToken(Usuario authUser) {
         Map<String, Object> claims = new HashMap<>();
-        claims = Jwts.claims().setSubject(authUser.getUsername());
+        claims = Jwts.claims().setSubject(authUser.getUserName());
         claims.put("id", authUser.getIdUser());
         Date now = new Date();
         Date exp = new Date(now.getTime() + jwtExpirationInMs);

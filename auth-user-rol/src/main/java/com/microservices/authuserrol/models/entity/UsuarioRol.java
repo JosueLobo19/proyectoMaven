@@ -1,11 +1,16 @@
 package com.microservices.authuserrol.models.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
 @Table(name = "usuario_rol")
@@ -21,14 +26,16 @@ public class UsuarioRol implements Serializable {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_registro")
-    private Date fechaRegistro;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaRegistro;
 
     @Column(name ="user_registro",length = 18)
     private String userRegistro;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "fecha_upt")
-    private Date fechaUpt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaUpt;
 
     @Column(name ="user_upt",length = 18)
     private String userUpt;
@@ -39,74 +46,6 @@ public class UsuarioRol implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_rol", nullable = false)
-    private Rol rol;
-
-    public long getIdUserRol() {
-        return idUserRol;
-    }
-
-    public void setIdUserRol(long idUserRol) {
-        this.idUserRol = idUserRol;
-    }
-
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
-
-    public Date getFechaRegistro() {
-        return fechaRegistro;
-    }
-
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-
-    public String getUserRegistro() {
-        return userRegistro;
-    }
-
-    public void setUserRegistro(String userRegistro) {
-        this.userRegistro = userRegistro;
-    }
-
-    public Date getFechaUpt() {
-        return fechaUpt;
-    }
-
-    public void setFechaUpt(Date fechaUpt) {
-        this.fechaUpt = fechaUpt;
-    }
-
-    public String getUserUpt() {
-        return userUpt;
-    }
-
-    public void setUserUpt(String userUpt) {
-        this.userUpt = userUpt;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
-
-    public UsuarioRol() {
-        super();
-    }
+    private RolEntidad rol;
 
 }

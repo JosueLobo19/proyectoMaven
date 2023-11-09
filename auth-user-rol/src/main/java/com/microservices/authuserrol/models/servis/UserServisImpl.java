@@ -4,14 +4,13 @@ import com.microservices.authuserrol.models.dtos.LoginDtos;
 import com.microservices.authuserrol.models.dtos.TokenDtos;
 import com.microservices.authuserrol.models.dtos.UserDtos;
 import com.microservices.authuserrol.models.entity.Persona;
-import com.microservices.authuserrol.models.entity.Rol;
+import com.microservices.authuserrol.models.entity.RolEntidad;
 import com.microservices.authuserrol.models.entity.Usuario;
 import com.microservices.authuserrol.models.errores.ResourceNotFoundException;
 import com.microservices.authuserrol.models.repository.IPersonaRepository;
 import com.microservices.authuserrol.models.repository.IRolRepository;
 import com.microservices.authuserrol.models.repository.IUsuarioRepository;
 import com.microservices.authuserrol.models.security.JwtProvider;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,8 +22,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserServisImpl implements IUserServis{
-
-    ModelMapper modelMapper;
 
     @Autowired
     private IRolRepository rolRepository;
@@ -43,7 +40,7 @@ public class UserServisImpl implements IUserServis{
     @Override
     public List<UserDtos> ObtenerListadoUser() {
         List<Usuario> listaDeUsuarios = usuarioRepository.findAll();
-        return listaDeUsuarios.stream().map(usuario -> mapearDTO(usuario)).collect(Collectors.toList());
+        return listaDeUsuarios.stream().map(this::mapearDTO).collect(Collectors.toList());
     }
 
     @Override
@@ -52,11 +49,13 @@ public class UserServisImpl implements IUserServis{
 
         System.out.println("el id persona es:"+usuarioDTO.getIdPersona());
         System.out.println("el id rol es:"+usuarioDTO.getIdRol());
+        System.out.println("el username es:"+usuarioDTO.getUserName());
+
         Usuario usuario= mapearEntidad(usuarioDTO);
         nombreRol=rolRepository.findById(usuarioDTO.getIdRol()).get().getNombre();
         System.out.println("el valor de rol nombre:"+nombreRol);
 
-        Rol roles = rolRepository.findById(usuarioDTO.getIdRol()).get();
+        RolEntidad roles = rolRepository.findById(usuarioDTO.getIdRol()).get();
         System.out.println("el valor de rol nombre:"+roles.getNombre());
 
         Persona persona= personaRepository.
@@ -65,7 +64,13 @@ public class UserServisImpl implements IUserServis{
         String password= passwordEncoder.encode(usuarioDTO.getPassword());
         usuario.setRol(Collections.singleton(roles));
         usuario.setPassword(password);
-        usuario.setPersona(persona);
+        //usuario.setPersona(persona);
+        System.out.println("lo que se esta guardando");
+        System.out.println("el estado es:"+usuario.getEstado());
+        System.out.println("el username es:"+usuario.getUserName());
+        System.out.println("el password es:"+usuario.getPassword());
+        System.out.println("el id persona es:"+usuario.getPersona().getId());
+        System.out.println("el id persona es:"+usuario.getRol());
         Usuario nuevoUsuario= usuarioRepository.save(usuario);
 
         return mapearDTO(nuevoUsuario);
@@ -120,12 +125,12 @@ public class UserServisImpl implements IUserServis{
     private UserDtos mapearDTO(Usuario usuario) {
         UserDtos userDtos= new UserDtos();
         long id_persona,id_rol;
-        Rol roldata;
+        RolEntidad roldata;
         id_persona=usuario.getPersona().getId();
-        roldata= (Rol) usuario.getRol();
+        roldata= (RolEntidad) usuario.getRol();
         id_rol=roldata.getIdRol();
         userDtos.setIdUser(usuario.getIdUser());
-        userDtos.setUsername(usuario.getUsername());
+        userDtos.setUserName(usuario.getUserName());
         userDtos.setPassword(usuario.getPassword());
         userDtos.setEstado(usuario.getEstado());
         userDtos.setIdPersona(id_persona);
@@ -135,9 +140,12 @@ public class UserServisImpl implements IUserServis{
     //convierte DTO a entidad
     private Usuario mapearEntidad(UserDtos userDtos) {
         Usuario usuario= new Usuario();
-        usuario.setUsername(userDtos.getUsername());
+        Persona persona=new Persona();
+        persona=personaRepository.findById(userDtos.getIdPersona()).orElseThrow(()->new ResourceNotFoundException("Persona", "id", userDtos.getIdPersona()));
+        usuario.setUserName(userDtos.getUserName());
         usuario.setPassword(userDtos.getPassword());
         usuario.setEstado(userDtos.getEstado());
+        usuario.setPersona(persona);
         return usuario;
     }
 

@@ -1,78 +1,29 @@
 package com.microservices.authuserrol.models.dtos;
 
-import com.microservices.authuserrol.models.entity.UsuarioRol;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDate;
 
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class RolDtos {
     private long idRol;
 
     private String nombre;
 
-    private Date fechaRegistro;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaRegistro;
 
     private Boolean estado;
 
 
-    private Set<UsuarioRol> usuarioRol=new HashSet<>();
+  // private Set<UsuarioRol> usuarioRol=new HashSet<>();
 
 
-    public long getIdRol() {
-        return idRol;
-    }
-
-
-    public void setIdRol(long idRol) {
-        this.idRol = idRol;
-    }
-
-
-
-
-
-    public String getNombre() {
-        return nombre;
-    }
-
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-
-    public Date getFechaRegistro() {
-        return fechaRegistro;
-    }
-
-
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
-
-
-    public Boolean getEstado() {
-        return estado;
-    }
-
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
-
-
-    public Set<UsuarioRol> getUsuarioRol() {
-        return usuarioRol;
-    }
-
-
-    public void setUsuarioRol(Set<UsuarioRol> usuarioRol) {
-        this.usuarioRol = usuarioRol;
-    }
-
-
-    public RolDtos() {
-        super();
-    }
 }
