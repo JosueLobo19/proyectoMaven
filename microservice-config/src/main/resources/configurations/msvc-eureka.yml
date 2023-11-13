@@ -7,9 +7,9 @@ spring:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: ms-fonafe.azurewebsites.net
   client:
     register-with-eureka: false
     fetch-registry: false
     server-url:
-      defaultZone: http://localhost:${server.port}/eureka
+      defaultZone: http://ms-fonafe.azurewebsites.net:${server.port}/eureka

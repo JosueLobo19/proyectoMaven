@@ -14,10 +14,10 @@ spring:
           enabled: true
       routes:
         - id: users
-          uri: http://localhost:8090
+          uri: http://ms-fonafe.azurewebsites.net:8090
           predicates:
             - Path=/api/v01/**
         - id: auth-user-rol
-          uri: http://localhost:8081
+          uri: http://ms-fonafe.azurewebsites.net:8081
           predicates:
             - Path=/auth/**

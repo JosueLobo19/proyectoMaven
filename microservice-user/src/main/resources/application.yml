@@ -2,7 +2,7 @@ spring:
   application:
     name: msvc-user
   config:
-    import: optional:configserver:http://localhost:8888
+    import: optional:configserver:http://ms-fonafe.azurewebsites.net:8888
   jackson:
     serialization:
       fail-on-empty-beans: false
