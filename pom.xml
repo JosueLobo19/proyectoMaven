@@ -23,6 +23,7 @@
   <module>microservice-config</module>
   <module>microservice-user</module>
   <module>auth-user-rol</module>
+  <module>microservice-privilegios</module>
 </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

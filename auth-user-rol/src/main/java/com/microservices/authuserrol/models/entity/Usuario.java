@@ -1,16 +1,13 @@
 package com.microservices.authuserrol.models.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 @Entity
 @Table(name = "usuario")
@@ -30,10 +27,88 @@ public class Usuario  implements Serializable {
     //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Persona persona;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_rol", referencedColumnName = "id_rol"))
-    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private Set<RolEntidad> rol = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "id_user",referencedColumnName = "id_user"),
+            inverseJoinColumns = @JoinColumn(name = "id_rol", referencedColumnName = "id_rol"),
+            uniqueConstraints = {@UniqueConstraint(columnNames = { "id_user", "id_rol" }) })
+    private List<Rol> rol;
 
+
+
+    public long getIdUser() {
+        return idUser;
+    }
+
+
+
+    public void setIdUser(long idUser) {
+        this.idUser = idUser;
+    }
+
+
+
+    public String getUsername() {
+        return userName;
+    }
+
+
+
+    public void setUsername(String username) {
+        this.userName = username;
+    }
+
+
+
+    public String getPassword() {
+        return password;
+    }
+
+
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
+
+    public String getEstado() {
+        return estado;
+    }
+
+
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
+    }
+
+
+
+    public List<Rol> getRol() {
+        return rol;
+    }
+
+
+
+    public void setRol(List<Rol> rol) {
+        this.rol = rol;
+    }
+
+
+
+    public Usuario() {
+        super();
+    }
 
 }

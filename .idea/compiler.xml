@@ -12,6 +12,7 @@
         <module name="microservice-user" />
         <module name="microservice-eureka" />
         <module name="microservice-config" />
+        <module name="microservice-privilegios" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -26,6 +27,7 @@
       <module name="microservice-config" options="-parameters" />
       <module name="microservice-eureka" options="-parameters" />
       <module name="microservice-gateway" options="-parameters" />
+      <module name="microservice-privilegios" options="-parameters" />
       <module name="microservice-user" options="-parameters" />
       <module name="microservices.gateway" options="-parameters" />
     </option>

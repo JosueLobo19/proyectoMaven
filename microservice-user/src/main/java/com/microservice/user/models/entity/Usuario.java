@@ -1,21 +1,11 @@
 package com.microservice.user.models.entity;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -37,9 +27,11 @@ public class Usuario  implements Serializable {
     @JoinColumn(name = "id_persona", nullable = false)
     private Persona persona;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "id_user", referencedColumnName = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_rol", referencedColumnName = "id_rol"))
-    private Set<Rol> rol = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "id_user",referencedColumnName = "id_user"),
+            inverseJoinColumns = @JoinColumn(name = "id_rol", referencedColumnName = "id_rol"),
+            uniqueConstraints = {@UniqueConstraint(columnNames = { "id_user", "id_rol" }) })
+    private List<Rol> rol;
 
     public long getIdUser() {
         return idUser;
@@ -101,13 +93,13 @@ public class Usuario  implements Serializable {
 
 
 
-    public Set<Rol> getRol() {
+    public List<Rol> getRol() {
         return rol;
     }
 
 
 
-    public void setRol(Set<Rol> rol) {
+    public void setRol(List<Rol> rol) {
         this.rol = rol;
     }
 

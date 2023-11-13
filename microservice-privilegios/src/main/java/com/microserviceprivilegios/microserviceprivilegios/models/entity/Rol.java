@@ -1,5 +1,7 @@
-package com.microservices.authuserrol.models.entity;
+package com.microserviceprivilegios.microserviceprivilegios.models.entity;
 
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,15 +10,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
 @Table(name = "rol")
-public class RolEntidad implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Rol implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_rol")
@@ -26,11 +30,10 @@ public class RolEntidad implements Serializable {
     private String nombre;
 
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fecha_registro")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechaRegistro;
 
     private Boolean estado;
-
 
 }
