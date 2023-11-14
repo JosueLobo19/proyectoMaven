@@ -16,7 +16,7 @@ spring:
         dialect: org.hibernate.dialect.SQLServerDialect
 eureka:
   instance:
-    hostname: ms-fonafe.azurewebsites.net
+    hostname: localhost
   client:
     service-url:
-      defaultZone: http://ms-fonafe.azurewebsites.net:8761/eureka
+      defaultZone: http://localhost:8761/eureka
