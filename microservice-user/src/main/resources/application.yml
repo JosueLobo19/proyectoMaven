@@ -6,3 +6,10 @@ spring:
   jackson:
     serialization:
       fail-on-empty-beans: false
+logging:
+  level:
+    org:
+      springframework:
+        test:
+          context:
+            cache: debug
