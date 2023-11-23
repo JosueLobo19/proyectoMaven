@@ -1,7 +1,6 @@
 package com.microservice.user.controllers;
 
 import com.microservice.user.models.dto.AreaDTO;
-import com.microservice.user.models.dto.EmpresaDTO;
 import com.microservice.user.models.service.AreaService;
 import jakarta.validation.Valid;
 import org.json.JSONObject;
@@ -14,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v01/area")
+@CrossOrigin
 public class AreaController {
 
     @Autowired

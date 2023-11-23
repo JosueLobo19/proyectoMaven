@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v01/opcionInterfaz")
+@RequestMapping("/pr/opcionInterfaz")
+@CrossOrigin
 public class OpcionInterfazController {
     private static JSONObject json=null;
 
@@ -32,7 +33,7 @@ public class OpcionInterfazController {
 
     @PostMapping
     public ResponseEntity<PrivilegioInterfazDTO> guardarOpcInt(@Valid @RequestBody PrivilegioInterfazDTO privilegioInterfazDTO) {
-
+        System.out.println("entro a guardar opcion de interfaz");
         return new ResponseEntity<>(opcionInterfazService.crearOpcInt(privilegioInterfazDTO), HttpStatus.CREATED);
 
     }

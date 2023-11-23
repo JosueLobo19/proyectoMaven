@@ -18,7 +18,7 @@ public class JwtProvider {
     private String jwtSecret="JWTSecretKey";
 
     //@Value("${app.jwt-expiration-milliseconds}")
-    private int jwtExpirationInMs=604800000;
+    private int jwtExpirationInMs=43200000;
 
     @PostConstruct
     protected void init() {

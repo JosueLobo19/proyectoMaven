@@ -17,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/auth")
+@CrossOrigin
 public class UserControlador {
 
     private static JSONObject json = null;

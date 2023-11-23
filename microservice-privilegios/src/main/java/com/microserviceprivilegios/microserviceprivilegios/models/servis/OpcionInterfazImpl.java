@@ -44,6 +44,14 @@ public class OpcionInterfazImpl implements OpcionInterfazService{
     @Override
     public PrivilegioInterfazDTO actualizarOpcInt(PrivilegioInterfazDTO privilegioInterfazDTO, long id) {
         PrivilegioInfertaz privilegioInfertaz=opcionesInterfazRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("PrivilegioInfertaz", "id", id));
+        privilegioInfertaz.setDescripcion(privilegioInterfazDTO.getDescripcion());
+        privilegioInfertaz.setEstado(privilegioInterfazDTO.getEstado());
+        privilegioInfertaz.setNivel(privilegioInterfazDTO.getNivel());
+        privilegioInfertaz.setIdPadre(privilegioInterfazDTO.getIdPadre());
+        privilegioInfertaz.setFechaRegistro(privilegioInterfazDTO.getFechaRegistro());
+        privilegioInfertaz.setUserRegistro(privilegioInterfazDTO.getUserRegistro());
+        privilegioInfertaz.setFechaActualizacion(privilegioInterfazDTO.getFechaActualizacion());
+        privilegioInfertaz.setUserActualizacion(privilegioInterfazDTO.getUserActualizacion());
         opcionesInterfazRepository.save(privilegioInfertaz);
         return mapearDTO(privilegioInfertaz);
     }

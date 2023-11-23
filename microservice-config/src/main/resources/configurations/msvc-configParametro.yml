@@ -1,9 +1,9 @@
 server:
-  port: 8082
+  port: 8083
 
 spring:
   application:
-    name: ms-privilegio
+    name: msvc-configParametro
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     url: jdbc:sqlserver://fonafe.database.windows.net;databaseName=pruebaFonafe;trustServerCertificate=false

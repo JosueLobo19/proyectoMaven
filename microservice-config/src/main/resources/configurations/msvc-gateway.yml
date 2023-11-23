@@ -23,3 +23,21 @@ spring:
           uri: http://localhost:8081
           predicates:
             - Path=/auth/**
+        - id: privil
+          uri: http://localhost:8082
+          predicates:
+            - Path=/pr/**
+          filters:
+            - AuthFilter
+        - id: configParametro
+          uri: http://localhost:8083
+          predicates:
+            - Path=/listaParametros/**
+          filters:
+            - AuthFilter
+        - id: proyectos
+          uri: http://localhost:8084
+          predicates:
+            - Path=/proyecto/**
+          filters:
+            - AuthFilter

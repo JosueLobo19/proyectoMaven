@@ -34,4 +34,8 @@ public class PrivilegioRolDTO {
     private PrivilegioInfertaz opciones_interfaz;
 
     private Rol rol;
+
+    private long idRol;
+
+    private long idOpcInt;
 }
