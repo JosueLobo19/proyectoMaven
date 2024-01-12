@@ -6,9 +6,9 @@ spring:
     name: msvc-privilegio
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://fonafe.database.windows.net;databaseName=pruebaFonafe;trustServerCertificate=false
-    username: devFonafe19
-    password: joshueLobo95!
+    url: jdbc:sqlserver://localhost;databaseName=pruebaFonafe;trustServerCertificate=true
+    username: joshueLobo
+    password: nuevaContra95!
   jpa:
     hibernate:
       ddl-auto: update

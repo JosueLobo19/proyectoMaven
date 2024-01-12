@@ -17,8 +17,6 @@ spring:
           uri: http://localhost:8090
           predicates:
             - Path=/api/v01/**
-          filters:
-            - AuthFilter
         - id: auth-user-rol
           uri: http://localhost:8081
           predicates:
@@ -39,5 +37,11 @@ spring:
           uri: http://localhost:8084
           predicates:
             - Path=/proyecto/**
+          filters:
+            - AuthFilter
+        - id: plantillaDocumentos
+          uri: http://localhost:8085
+          predicates:
+            - Path=/estructuraDocumento/**
           filters:
             - AuthFilter

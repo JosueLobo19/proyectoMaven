@@ -1,9 +1,9 @@
 server:
-  port: 8083
+  port: 8085
 
 spring:
   application:
-    name: msvc-configParametro
+    name: msvc-plantillasReport
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     url: jdbc:sqlserver://localhost;databaseName=pruebaFonafe;trustServerCertificate=true

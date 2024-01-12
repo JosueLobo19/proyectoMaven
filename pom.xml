@@ -26,6 +26,7 @@
   <module>microservice-privilegios</module>
   <module>microservice-configParametros</module>
   <module>microservice-proyecto</module>
+  <module>microservice-plantillas-report</module>
 </modules>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

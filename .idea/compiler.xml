@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="microservice-gateway" />
+        <module name="microservice-plantillas-report" />
         <module name="auth-user-rol" />
         <module name="microservice-configParametros" />
         <module name="microservice-config" />
@@ -30,6 +31,7 @@
       <module name="microservice-configParametros" options="-parameters" />
       <module name="microservice-eureka" options="-parameters" />
       <module name="microservice-gateway" options="-parameters" />
+      <module name="microservice-plantillas-report" options="-parameters" />
       <module name="microservice-privilegios" options="-parameters" />
       <module name="microservice-proyecto" options="-parameters" />
       <module name="microservice-user" options="-parameters" />
